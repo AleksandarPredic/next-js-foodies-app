@@ -1,5 +1,5 @@
 import './globals.css';
-import Menu from '@/components/Menu'
+import MainHeader from "@/components/MainHeader/MainHeader";
 
 export const metadata = {
   title: 'NextLevel Food',
@@ -31,7 +31,7 @@ export default function RootLayout({ children }) {
           </svg>
         </div>
 
-        <Menu />
+        <MainHeader/>
 
         {children}
       </body>
