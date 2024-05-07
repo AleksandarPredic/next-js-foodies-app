@@ -4,6 +4,7 @@ import styles from './MainHeader.module.css';
 import logoImg from '@/assets/logo.png';
 import Image from "next/image";
 import MainHeaderBackground from "@/components/MainHeader/MainHeaderBackground/MainHeaderBackground";
+import NavLink from "@/components/NavLink/NavLink";
 
 export default function MainHeader() {
   return (
@@ -24,9 +25,12 @@ export default function MainHeader() {
 
         <nav className={styles.nav}>
           <ul style={{color: 'white'}}>
-            <li><Link href="/meals">Browse meals</Link></li>
-            <li><Link href="/community">Foodies Community</Link></li>
-            <li><Link href="/meals/share">Share Meals</Link></li>
+            <li>
+              <NavLink href={'/meals'}>Browse meals</NavLink>
+            </li>
+            <li>
+              <NavLink href={'/community'}>Community</NavLink>
+            </li>
           </ul>
         </nav>
       </header>
