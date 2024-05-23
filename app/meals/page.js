@@ -1,8 +1,23 @@
 import styles from './page.module.css';
 import Link from "next/link";
 import MealsGrid from "@/components/Meals/MealsGrid/MealsGrid";
+import {getMeals} from "@/lib/meals";
+import {Suspense} from "react";
+
+// In normal React App you can not use async here without useEffect hook, but in NextJs we can in server components
+async function Meals() {
+  const meals = await getMeals();
+
+  return <MealsGrid meals={meals} />;
+}
+
+function LoadingFallback() {
+  return <p className={styles.loading}>Fetching meals...</p>;
+}
 
 export default function MealsPage() {
+
+
   return <>
     <header className={styles.header}>
       <h1>
@@ -15,7 +30,9 @@ export default function MealsPage() {
       </p>
     </header>
     <main>
-      <MealsGrid meals={[]} />
+      <Suspense fallback={LoadingFallback()}>
+        <Meals />
+      </Suspense>
     </main>
   </>;
 }
